@@ -55,7 +55,7 @@ export class TeammembersComponent implements OnInit {
   editMember(element) {
     console.log(element);
     let dialogRef = this.dialog.open(AddmemberComponent, {
-      height: '580px',
+      height: '600px',
       width: '500px',
       data: element
     });
