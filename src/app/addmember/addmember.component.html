@@ -1,0 +1,36 @@
+<div style="margin-top: 15px;">
+    <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Placeholder" [(ngModel)]="data.name">
+        <mat-icon matSuffix>account_circle</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Role</mat-label>
+        <input matInput placeholder="Placeholder" [(ngModel)]="data.role">
+        <mat-icon matSuffix>work</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Mobile Number</mat-label>
+        <input matInput placeholder="Placeholder" [(ngModel)]="data.mobileNumber">
+        <mat-icon matSuffix>phone_iphone</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Added On</mat-label>
+        <input matInput placeholder="Placeholder" [(ngModel)]="data.addedOn">
+        <mat-icon matSuffix>post_add</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Added By</mat-label>
+        <input matInput placeholder="Placeholder" [(ngModel)]="data.addedBy">
+        <mat-icon matSuffix>person_add_alt</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Status</mat-label>
+        <input matInput placeholder="Placeholder" [(ngModel)]="data.status">
+        <mat-icon matSuffix>fact_check</mat-icon>
+    </mat-form-field>
+    <div style="text-align: center;">
+        <button *ngIf="data" (click)="update()" mat-raised-button>Update</button>
+        <button *ngIf="!data" (click)="save()" mat-raised-button>Save</button>
+    </div>
+</div>
