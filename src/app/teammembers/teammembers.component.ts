@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddmemberComponent } from '../addmember/addmember.component';
+import { AddmemberComponent } from './addmember/addmember.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 export interface PeriodicElement {
   name: string;
@@ -27,8 +28,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
   { name: 'Kumaresan', role: 'Admin', mobileNumber: '+91 9789117240', addedOn: '10/06/21', addedBy: 'James Bond', status: 'Pending', actions: '' },
   { name: 'Arun Prasad', role: 'Team Member', mobileNumber: '+91 9789117240', addedOn: '10/06/21', addedBy: 'James Bond', status: 'Expired', actions: '' },
   { name: 'Kumaresan', role: 'Admin', mobileNumber: '+91 9789117240', addedOn: '10/06/21', addedBy: 'James Bond', status: 'Pending', actions: '' },
-
-
 ];
 
 @Component({
@@ -40,6 +39,8 @@ export class TeammembersComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'role', 'mobileNumber', 'addedOn', 'addedBy', 'status', 'actions'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  @ViewChild(MatSort) sort: MatSort;
+
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -48,12 +49,13 @@ export class TeammembersComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   editMember(element) {
     console.log(element);
     let dialogRef = this.dialog.open(AddmemberComponent, {
-      height: '550px',
+      height: '580px',
       width: '500px',
       data: element
     });
@@ -84,5 +86,8 @@ export class TeammembersComponent implements OnInit {
       return { background: 'grey' };
   }
 
+  public doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
 
 }

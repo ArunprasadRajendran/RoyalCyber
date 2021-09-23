@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TeammembersComponent } from '../teammembers/teammembers.component';
+import { TeammembersComponent } from '../teammembers.component';
 
 @Component({
   selector: 'app-addmember',
@@ -22,6 +22,11 @@ export class AddmemberComponent implements OnInit {
 
   save() {
     console.log('Member added');
+    this.dialogRef.close();
+  }
+
+  close() {
+    console.log('Dialog closed');
     this.dialogRef.close();
   }
 }
