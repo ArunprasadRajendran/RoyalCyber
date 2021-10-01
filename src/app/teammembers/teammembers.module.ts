@@ -12,10 +12,12 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
+import { StylePaginatorDirective } from '../directive/style-paginator.directive';
 
 @NgModule({
   declarations: [
-    TeammembersComponent
+    TeammembersComponent,
+    StylePaginatorDirective
   ],
   imports: [
     CommonModule,

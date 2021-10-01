@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddmemberComponent } from './addmember/addmember.component';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorIntl, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
@@ -41,10 +41,31 @@ export class TeammembersComponent implements OnInit {
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   @ViewChild(MatSort) sort: MatSort;
 
+
+
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
+  EmitResult = {
+    pageNumber: '',
+    pageSize: '',
+  };
+
+  testPaginator = {
+    length: 1000,
+    pageSize: 10,
+    pageIndex: 1,
+  };
+
+  pageEvent: PageEvent;
+
+  showTestEmit = ($event) => {
+    this.EmitResult = {
+      pageNumber: $event.pageIndex,
+      pageSize: $event.pageSize,
+    };
+  };
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   ngAfterViewInit() {

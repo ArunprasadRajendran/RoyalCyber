@@ -4,7 +4,7 @@
             <div class="col-lg">
                 <h3>MY TEAM</h3>
             </div>
-            <div class="col-lg" >
+            <div class="col-lg">
                 <div fxLayout>
                     <mat-form-field style="display: block;">
                         <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
@@ -68,7 +68,8 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef> Actions </th>
                 <td mat-cell *matCellDef="let element">
-                    <mat-icon class="pointer" (click)="editMember(element)" aria-hidden="false" aria-label="Example home icon">edits
+                    <mat-icon class="pointer" (click)="editMember(element)" aria-hidden="false"
+                        aria-label="Example home icon">edits
                     </mat-icon>
                     &nbsp;&nbsp;
                     <mat-icon class="pointer" aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
@@ -79,8 +80,17 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
         </table>
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
             aria-label="Select page of periodic elements">
-        </mat-paginator>
+        </mat-paginator> -->
+        <mat-paginator
+        appPagination
+        [length]="testPaginator.length"
+        [pageSizeOptions]="[5, 10, 20]"
+        [pageSize]="testPaginator.pageSize"
+        [pageIndex]="testPaginator.pageIndex"
+        [hidePageSize]="false"
+      >
+      </mat-paginator>
     </div>
 </div>

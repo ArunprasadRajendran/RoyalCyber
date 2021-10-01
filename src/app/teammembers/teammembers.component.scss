@@ -37,4 +37,18 @@
     cursor: pointer;
 }
 
-
+.pg-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  td,
+  th,
+  tr,
+  h2,
+  h1 {
+    text-align: center;
+  }
+  
